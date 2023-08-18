@@ -1,6 +1,7 @@
 <header class="header">
   <div class="header__container">
     <button
+      routerLink="/main"
       mat-icon-button
       color="primary"
       aria-label="Example icon button with a home icon"
@@ -8,8 +9,19 @@
     >
       <mat-icon>home</mat-icon>
     </button>
-    <button class="button button_auth" mat-raised-button color="primary">
-      Log in
-    </button>
+    <div class="header__auth">
+      <button class="button button_login" mat-raised-button color="primary">
+        Log in
+      </button>
+      <button
+        routerLink="/auth"
+        mat-icon-button
+        color="primary"
+        aria-label="Example icon button with a home icon"
+        class="button button_user"
+      >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
   </div>
 </header>
