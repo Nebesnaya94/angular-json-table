@@ -1,0 +1,70 @@
+<mat-card class="login-card">
+  <mat-card-content class="login-card__container">
+    <h2 class="login-card__title">Authorization</h2>
+    <form class="login-card__form" [formGroup]="form" (ngSubmit)="logIn()">
+      <mat-form-field appearance="outline" class="login-card__form-field">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="emailControl" />
+        <mat-error
+          *ngIf="
+            form.get('emailControl')?.invalid &&
+            (form.get('emailControl')?.dirty ||
+              form.get('emailControl')?.touched)
+          "
+        >
+          <span *ngIf="form.get('emailControl')?.hasError('required')"
+            >Please enter your email</span
+          >
+          <span *ngIf="form.get('emailControl')?.hasError('email')"
+            >This email is invalid</span
+          >
+          <span *ngIf="form.get('emailControl')?.hasError('unexisting')"
+            >This user doesn't exist</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="login-card__form-field">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="passwordControl" />
+        <mat-error
+          *ngIf="
+            form.get('passwordControl')?.invalid &&
+            (form.get('passwordControl')?.dirty ||
+              form.get('passwordControl')?.touched)
+          "
+        >
+          <span *ngIf="form.get('passwordControl')?.hasError('required')"
+            >Please enter your password</span
+          >
+          <span *ngIf="form.get('passwordControl')?.hasError('minlength')">
+            Your password must contain at least 8 characters
+          </span>
+          <span *ngIf="form.get('passwordControl')?.hasError('incorrect')">
+            Your password is incorrect
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <div class="login-card__button-container">
+        <ng-container
+          *ngIf="isAuthorized; then deauthorize; else authorize"
+        ></ng-container>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #authorize
+  ><button
+    type="submit"
+    [disabled]="!form.valid"
+    mat-raised-button
+    color="primary"
+  >
+    Log in
+  </button></ng-template
+>
+<ng-template #deauthorize
+  ><button (click)="logOut()" mat-raised-button color="primary">
+    Log out
+  </button></ng-template
+>

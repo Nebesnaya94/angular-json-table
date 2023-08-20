@@ -10,18 +10,23 @@
       <mat-icon>home</mat-icon>
     </button>
     <div class="header__auth">
-      <button class="button button_login" mat-raised-button color="primary">
-        Log in
-      </button>
-      <button
-        routerLink="/auth"
-        mat-icon-button
-        color="primary"
-        aria-label="Example icon button with a home icon"
-        class="button button_user"
-      >
-        <mat-icon>account_circle</mat-icon>
-      </button>
+      <ng-container
+        *ngIf="isAuthorized; then authorized; else deauthorized"
+      ></ng-container>
     </div>
   </div>
 </header>
+
+<ng-template #authorized
+  ><button routerLink="/auth/log-in" mat-raised-button color="primary">
+    Log out
+  </button>
+</ng-template>
+<ng-template #deauthorized
+  ><button routerLink="/auth/log-in" mat-raised-button color="primary">
+    Log in
+  </button>
+  <button routerLink="/auth/sign-up" mat-raised-button color="primary">
+    Sign up
+  </button></ng-template
+>
