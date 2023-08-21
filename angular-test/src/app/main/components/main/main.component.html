@@ -1,1 +1,9 @@
-<p>main works!</p>
+<ul class="list-group">
+  <li
+    *ngFor="let post of posts"
+    [routerLink]="['/details', post.id]"
+    class="list-group-item"
+  >
+    {{ post.title }}
+  </li>
+</ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, effect } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
