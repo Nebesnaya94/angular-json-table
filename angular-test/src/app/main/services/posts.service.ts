@@ -8,9 +8,7 @@ import {
   IResponsePost,
 } from 'src/app/shared/models/response';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class PostsService {
   private API_URL = 'https://jsonplaceholder.typicode.com';
 
