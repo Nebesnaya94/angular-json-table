@@ -3,7 +3,7 @@ import { IUser } from 'src/app/shared/models/user';
 
 @Injectable()
 export class AuthService {
-  private user!: IUser;
+  private user!: IUser | null;
   private users!: IUser[];
   isLogged = signal(!!localStorage.getItem('user'));
 
@@ -46,10 +46,8 @@ export class AuthService {
 
   getLoggedUser() {
     const savedUser = localStorage.getItem('user');
+    this.user = savedUser ? JSON.parse(savedUser) : null;
     this.isLogged.set(!!savedUser);
-    if (savedUser) {
-      this.user = JSON.parse(savedUser);
-    }
     return this.user;
   }
 }
