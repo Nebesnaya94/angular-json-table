@@ -1,3 +1,3 @@
 # angular-test
 
-**Deploy:** https://nebesnaya94.github.io/CV/
+**Deploy:** https://angular-test-8ca84f.netlify.app/
