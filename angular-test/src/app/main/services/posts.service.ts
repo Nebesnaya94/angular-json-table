@@ -33,8 +33,6 @@ export class PostsService {
               ...post,
               userName: userList[post.userId],
             }));
-            console.log(result);
-
             this.posts.set(result);
             return result;
           })

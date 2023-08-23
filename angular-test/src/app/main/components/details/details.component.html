@@ -1,3 +1,4 @@
-<h2>{{ detailsItem?.title }}</h2>
-<p>{{ detailsItem?.userName }}</p>
-<p>{{ detailsItem?.body }}</p>
+<div class="details-wrapper">
+  <button routerLink="/main" mat-button>← Back</button>
+  <app-card [item]="detailsItem" />
+</div>

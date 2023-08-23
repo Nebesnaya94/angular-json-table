@@ -34,7 +34,6 @@ export class DetailsComponent implements OnInit {
       this.detailsItem = this.detailsItems.find(
         (item) => item.id == params['id']
       );
-      console.log(this.detailsItem);
     });
   }
 
