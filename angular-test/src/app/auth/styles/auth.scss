@@ -12,6 +12,7 @@
     margin-bottom: 30px;
     font-size: 28px;
     line-height: 40px;
+    font-weight: 600;
   }
 
   &__form-field {
@@ -28,6 +29,26 @@
       width: 70%;
       display: block;
       margin: 0 auto;
+    }
+  }
+
+  &__redirect {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__redirect-link {
+    color: #3c2169;
+
+    &.mat-mdc-button.mat-mdc-button-base {
+      height: 32px;
+      font-size: 16px;
+      position: relative;
+      bottom: 2px;
+
+      span {
+        border-bottom: 1px solid;
+      }
     }
   }
 }

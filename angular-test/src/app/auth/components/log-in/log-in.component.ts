@@ -2,6 +2,7 @@ import { Component, OnInit, effect } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IUser } from 'src/app/shared/models/user';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -13,9 +14,12 @@ export class LogInComponent implements OnInit {
   form!: FormGroup;
   isAuthorized!: boolean;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     effect(() => {
       this.isAuthorized = this.authService.isLogged();
+      if (!this.isAuthorized && this.form) {
+        this.resetForm();
+      }
     });
   }
 
@@ -55,15 +59,15 @@ export class LogInComponent implements OnInit {
     }
     this.form.disable();
     this.authService.login(this.user);
+    this.router.navigateByUrl('main');
   }
 
-  logOut() {
+  resetForm() {
     this.form.reset();
     this.form.enable();
     Object.keys(this.form.controls).forEach((key) => {
       const control = this.form.controls[key];
       control.setErrors(null);
     });
-    this.authService.logout();
   }
 }

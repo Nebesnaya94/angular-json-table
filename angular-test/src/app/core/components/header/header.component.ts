@@ -1,5 +1,7 @@
 import { Component, effect } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogModalComponent } from '../dialog/dialog-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,13 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HeaderComponent {
   isAuthorized!: boolean;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, public dialog: MatDialog) {
     effect(() => {
       this.isAuthorized = this.authService.isLogged();
     });
+  }
+
+  openDialog() {
+    this.dialog.open(DialogModalComponent);
   }
 }

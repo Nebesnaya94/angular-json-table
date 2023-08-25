@@ -1,7 +1,7 @@
 <div class="wrapper">
   <mat-card class="signup-card">
     <mat-card-content class="signup-card__container">
-      <h2 class="signup-card__title">Registration</h2>
+      <h2 class="signup-card__title">Sign up</h2>
       <form class="signup-card__form" [formGroup]="form" (ngSubmit)="signUp()">
         <mat-form-field appearance="outline" class="signup-card__form-field">
           <mat-label>Email</mat-label>
@@ -42,6 +42,17 @@
             </span>
           </mat-error>
         </mat-form-field>
+        <div *ngIf="!isAuthorized" class="signup-card__redirect">
+          Already have an accout?
+          <button
+            type="button"
+            class="signup-card__redirect-link"
+            [routerLink]="['/auth', 'log-in']"
+            mat-button
+          >
+            <span>Log in</span>
+          </button>
+        </div>
         <div class="signup-card__button-container">
           <button
             type="submit"

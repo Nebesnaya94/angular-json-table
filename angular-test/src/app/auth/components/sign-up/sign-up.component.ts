@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IUser } from 'src/app/shared/models/user';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,8 +12,13 @@ import { AuthService } from '../../services/auth.service';
 export class SignUpComponent implements OnInit {
   user!: IUser | null;
   form!: FormGroup;
+  isAuthorized!: boolean;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {
+    effect(() => {
+      this.isAuthorized = this.authService.isLogged();
+    });
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -37,6 +43,11 @@ export class SignUpComponent implements OnInit {
       return;
     }
     this.authService.signup(this.user);
+    this.resetForm();
+    this.router.navigate(['auth', 'log-in']);
+  }
+
+  resetForm() {
     this.form.reset();
     Object.keys(this.form.controls).forEach((key) => {
       const control = this.form.controls[key];

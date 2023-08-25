@@ -18,15 +18,15 @@
 </header>
 
 <ng-template #authorized
-  ><button routerLink="/auth/log-in" mat-raised-button color="primary">
+  ><button (click)="openDialog()" mat-raised-button color="primary">
     Log out
   </button>
 </ng-template>
 <ng-template #deauthorized
-  ><button routerLink="/auth/log-in" mat-raised-button color="primary">
+  ><button [routerLink]="['/auth', 'log-in']" mat-raised-button color="primary">
     Log in
   </button>
-  <button routerLink="/auth/sign-up" mat-raised-button color="primary">
+  <button [routerLink]="['/auth', 'sign-up']" mat-raised-button color="primary">
     Sign up
   </button></ng-template
 >

@@ -1,7 +1,7 @@
 <div class="wrapper">
   <mat-card class="login-card">
     <mat-card-content class="login-card__container">
-      <h2 class="login-card__title">Authorization</h2>
+      <h2 class="login-card__title">Log in</h2>
       <form class="login-card__form" [formGroup]="form" (ngSubmit)="logIn()">
         <mat-form-field appearance="outline" class="login-card__form-field">
           <mat-label>Email</mat-label>
@@ -45,28 +45,28 @@
             </span>
           </mat-error>
         </mat-form-field>
+        <div *ngIf="!isAuthorized" class="signup-card__redirect">
+          Doesn't have an accout yet?
+          <button
+            type="button"
+            class="signup-card__redirect-link"
+            [routerLink]="['/auth', 'sign-up']"
+            mat-button
+          >
+            <span>Sign up</span>
+          </button>
+        </div>
         <div class="login-card__button-container">
-          <ng-container
-            *ngIf="isAuthorized; then deauthorize; else authorize"
-          ></ng-container>
+          <button
+            type="submit"
+            [disabled]="!form.valid || isAuthorized"
+            mat-raised-button
+            color="primary"
+          >
+            Log in
+          </button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
 </div>
-
-<ng-template #authorize
-  ><button
-    type="submit"
-    [disabled]="!form.valid"
-    mat-raised-button
-    color="primary"
-  >
-    Log in
-  </button></ng-template
->
-<ng-template #deauthorize
-  ><button (click)="logOut()" mat-raised-button color="primary">
-    Log out
-  </button></ng-template
->
