@@ -1,0 +1,58 @@
+.signup-card,
+.login-card {
+  margin: 50px auto;
+  max-width: 500px;
+
+  &.mat-mdc-card {
+    background: rgba(103, 58, 183, 0.075);
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+
+  &__form-field {
+    &.mat-form-field-appearance-outline {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__button-container {
+    margin: 20px 0;
+
+    button.mdc-button {
+      width: 70%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  &__redirect {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__redirect-link {
+    color: #3c2169;
+
+    &.mat-mdc-button.mat-mdc-button-base {
+      height: 32px;
+      font-size: 16px;
+      position: relative;
+      bottom: 2px;
+
+      span {
+        border-bottom: 1px solid;
+      }
+    }
+  }
+}
+
+.wrapper {
+  padding: 30px;
+}

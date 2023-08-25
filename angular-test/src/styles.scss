@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: whitesmoke;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined {
+  background: white;
+
+  .mdc-floating-label {
+    text-shadow: 0px -1px 3px white;
+  }
+}
+
+.mdc-dialog__container {
+  .mat-mdc-dialog-surface.mdc-dialog__surface {
+    min-width: 250px;
+
+    .mat-mdc-dialog-actions {
+      justify-content: end;
+    }
+  }
+}
+
+.cdk-global-scrollblock {
+  overflow-y: auto;
+}

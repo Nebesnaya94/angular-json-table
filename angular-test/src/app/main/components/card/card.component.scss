@@ -1,0 +1,28 @@
+.mat-mdc-card {
+  padding: 10px 10px 20px;
+
+  .mat-mdc-card-header {
+    margin-bottom: 40px;
+
+    .mat-mdc-card-title {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .mat-mdc-card-subtitle {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .mat-mdc-card-content {
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    p {
+      flex-basis: 70%;
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<div class="wrapper">
+  <mat-card class="login-card">
+    <mat-card-content class="login-card__container">
+      <h2 class="login-card__title">Log in</h2>
+      <form class="login-card__form" [formGroup]="form" (ngSubmit)="logIn()">
+        <mat-form-field appearance="outline" class="login-card__form-field">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="emailControl" />
+          <mat-error
+            *ngIf="
+              form.get('emailControl')?.invalid &&
+              (form.get('emailControl')?.dirty ||
+                form.get('emailControl')?.touched)
+            "
+          >
+            <span *ngIf="form.get('emailControl')?.hasError('required')"
+              >Please enter your email</span
+            >
+            <span *ngIf="form.get('emailControl')?.hasError('email')"
+              >This email is invalid</span
+            >
+            <span *ngIf="form.get('emailControl')?.hasError('unexisting')"
+              >This user doesn't exist</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="login-card__form-field">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="passwordControl" />
+          <mat-error
+            *ngIf="
+              form.get('passwordControl')?.invalid &&
+              (form.get('passwordControl')?.dirty ||
+                form.get('passwordControl')?.touched)
+            "
+          >
+            <span *ngIf="form.get('passwordControl')?.hasError('required')"
+              >Please enter your password</span
+            >
+            <span *ngIf="form.get('passwordControl')?.hasError('minlength')">
+              Your password must contain at least 8 characters
+            </span>
+            <span *ngIf="form.get('passwordControl')?.hasError('incorrect')">
+              Your password is incorrect
+            </span>
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="!isAuthorized" class="signup-card__redirect">
+          Doesn't have an accout yet?
+          <button
+            type="button"
+            class="signup-card__redirect-link"
+            [routerLink]="['/auth', 'sign-up']"
+            mat-button
+          >
+            <span>Sign up</span>
+          </button>
+        </div>
+        <div class="login-card__button-container">
+          <button
+            type="submit"
+            [disabled]="!form.valid || isAuthorized"
+            mat-raised-button
+            color="primary"
+          >
+            Log in
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
